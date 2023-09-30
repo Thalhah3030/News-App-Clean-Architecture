@@ -28,7 +28,6 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
-
   <title>news_app_clean_architecture</title>
   <link rel="manifest" href="manifest.json">
 
@@ -44,11 +43,15 @@
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
+        // service worker version so the app does not crash
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
+        // when entrypoint is loaded, the function engineinitializer tuns
         onEntrypointLoaded: function(engineInitializer) {
+          // Initialize Engine Function
           engineInitializer.initializeEngine().then(function(appRunner) {
+            // run the app
             appRunner.runApp();
           });
         }
